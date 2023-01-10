@@ -1,6 +1,7 @@
 package com.htb.realmdatabase
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
@@ -66,9 +67,11 @@ class MainActivity : AppCompatActivity() {
         alertDialog.show()
 
         btnUpdate.setOnClickListener {
+            Log.e("oooooo", "showDialogUpdate: ${article.id}")
             val id = article.id.toString()
-            val title = article.title.toString()
-            val des = article.description.toString()
+            val title = edTitle.text.toString()
+            val des = edDes.text.toString()
+
             viewModel.updateArticle(id, title, des)
             Toast.makeText(this, "Article Updated...", Toast.LENGTH_SHORT).show()
             alertDialog.dismiss()

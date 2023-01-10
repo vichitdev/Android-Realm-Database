@@ -1,5 +1,6 @@
 package com.htb.realmdatabase
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import io.realm.Realm
@@ -39,7 +40,10 @@ class MainViewModel : ViewModel() {
         realm.executeTransaction {
             article?.title = title
             article?.description = des
-            article?.let { it1 -> realm.insertOrUpdate(it1) }
+            article?.let { m ->
+                Log.e("ooooo", "updateArticle: $m" )
+                realm.insertOrUpdate(m)
+            }
         }
     }
 }
